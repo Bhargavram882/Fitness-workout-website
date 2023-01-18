@@ -9,7 +9,7 @@ const Navbar = () => {
      justifyContent="space-around" sx={{ gap: { sm : '122px', xs: '40px'}, mt: {sm: '32px',xs: '20px'}, justifyContent: 'none'}} px="20px"
     >
       <Link to="/"> 
-         <img src = {Logo} alt="logo" style = {{ width: '48px', margin: '0 20px'}} />
+         <img src = {Logo} alt="logo" style = {{ width: '78px', margin: '0 20px'}} />
       </Link>
       <Stack
         direction="row"
@@ -19,6 +19,7 @@ const Navbar = () => {
       >
         <Link to ="/" style = {{ textDecoration: 'none', color: '#3A1212', borderButton:'3px solid dodgerblue' }}>Home</Link>
         <a href="#exercises" style={{ textDecoration: 'none', color: '#3A1212' }}>Exercises</a>
+        <a href="#exercises" style={{ textDecoration: 'none', color: '#3A1212' }}>Contact us</a>
       </Stack>
     </Stack>
   )
