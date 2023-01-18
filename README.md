@@ -1,4 +1,5 @@
 FITNESS WORKOUT WEBSITE FOR DIFFERENT BODY PARTS
+
 Deployed using Netlify app: 
 fitness-club-daily.netlify.app
 Used : React JS , Tailwind CSS , Rapid APIs
