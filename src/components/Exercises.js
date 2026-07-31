@@ -9,9 +9,12 @@ import Loader from './Loader';
 const Exercises = ({ exercises, setExercises, bodyPart }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [exercisesPerPage] = useState(6);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchExercisesData = async () => {
+      setLoading(true);
+
       let exercisesData = [];
 
       if (bodyPart === 'all') {
@@ -20,7 +23,8 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
         exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, exerciseOptions);
       }
 
-      setExercises(exercisesData);
+      setExercises(Array.isArray(exercisesData) ? exercisesData : []);
+      setLoading(false);
     };
 
     fetchExercisesData();
@@ -37,7 +41,17 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
     window.scrollTo({ top: 1800, behavior: 'smooth' });
   };
 
-  if (!currentExercises.length) return <Loader />;
+  if (loading) return <Loader />;
+
+  if (!currentExercises.length) {
+    return (
+      <Box id="exercises" sx={{ mt: { lg: '109px' } }} mt="50px" p="20px" textAlign="center">
+        <Typography variant="h5" fontWeight="bold">
+          No exercises found. The exercise data source may be temporarily unavailable — please check back later.
+        </Typography>
+      </Box>
+    );
+  }
 
   return (
     <Box id="exercises" sx={{ mt: { lg: '109px' } }} mt="50px" p="20px">
